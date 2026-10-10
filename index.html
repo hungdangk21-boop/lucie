@@ -6,19 +6,19 @@
     <title>Lucie Eyewear · Đo mắt miễn phí, kính cận và kính râm có độ</title>
     <meta name="description" content="Lucie Eyewear: đo mắt miễn phí, cắt kính cận và kính râm có độ, nhận kính trong ngày. Ghé cửa hàng bất kỳ lúc nào, không cần hẹn." />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/dist/styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
-    <script src="/main.js" defer></script>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
   </head>
   <body class="bg-background font-sans text-sm text-pretty text-foreground">
     <header class="sticky top-0 z-30 border-b border-border-strong bg-background">
       <div class="mx-auto flex h-24 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <!-- Logo của bạn (assets/logo-lockup.png, cắt từ file gốc). Nền kem của ảnh hoà vào nền trang nhờ mix-blend-multiply. -->
+        <!-- Logo: src/assets/logo-lockup.png, cắt và tách nền từ design/logo-source.png. -->
         <a href="/" class="flex shrink-0 items-center" aria-label="Lucie Eyewear, trang chủ">
-          <img src="/assets/logo-lockup.png" alt="Lucie Eyewear" width="960" height="598" class="h-20 w-auto" />
+          <img src="/src/assets/logo-lockup.png" alt="Lucie Eyewear" width="386" height="240" class="h-20 w-auto" />
         </a>
         <nav class="hidden items-center gap-1 lg:flex" aria-label="Chính">
           <a href="#exam" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Đo mắt</a>
@@ -39,7 +39,7 @@
     <div data-drawer-scrim class="pointer-events-none fixed inset-0 z-40 bg-black/30 opacity-0 transition-opacity duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] data-open:pointer-events-auto data-open:opacity-100 data-open:duration-500 lg:hidden"></div>
     <aside id="drawer" aria-label="Menu" class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col gap-1 border-r border-border bg-surface p-3 shadow-modal transition-[translate] duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] data-open:translate-x-0 data-open:duration-500 lg:hidden" inert>
       <div class="mb-2 flex h-16 items-center px-2">
-        <img src="/assets/logo-lockup.png" alt="Lucie Eyewear" width="960" height="598" class="h-14 w-auto" />
+        <img src="/src/assets/logo-lockup.png" alt="Lucie Eyewear" width="386" height="240" class="h-14 w-auto" />
       </div>
       <a href="#exam" aria-current="page" class="flex h-10 items-center gap-3 rounded-xl bg-secondary px-3 text-sm font-medium text-foreground"><i data-lucide="eye" class="size-4 shrink-0"></i>Đo mắt</a>
       <a href="#frames" class="flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="glasses" class="size-4 shrink-0"></i>Gọng kính</a>
