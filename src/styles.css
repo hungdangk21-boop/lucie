@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* Bộ token khởi đầu, chép từ tokens.css của skill (nền sáng).
+
+   ĐỔI THƯƠNG HIỆU: màu nhấn sửa ở khối "MÀU NHẤN" ngay dưới (bốn dòng), font sửa ở --app-font.
+   Ngoài khối :root này không rải mã màu ở bất kỳ đâu. */
+:root {
+  color-scheme: light;
+
+  /* ===== FONT =====
+     Body Inter. Tiêu đề trang trình diễn dùng Montserrat (T2): chữ hoa hình học, khớp chữ "LUCIE" của logo. */
+  --app-font: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --display-font: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  /* ===== MÀU THƯƠNG HIỆU, lấy từ logo Lucie Eyewear =====
+     --primary: nâu đen của chữ LUCIE, cho nút chính và khối nhấn. Chữ kem trên nó 14:1.
+     --gold: vàng đồng của gọng kính, chỉ cho nét và hình trang trí (3:1 trên kem, không đủ cho chữ).
+     --gold-text: vàng đồng đậm hơn, cho chữ và icon nhỏ: 5.8:1 trên nền kem, 5.1:1 trên --sand.
+     --sand: kem đậm, nền khối trang trí (vòng cung sân khấu, ô icon). */
+  --primary: #2a2622;
+  --primary-hover: color-mix(in oklab, var(--primary) 85%, var(--background));
+  --primary-foreground: #fcf9f5;
+  --primary-light: color-mix(in srgb, var(--primary) 5%, transparent);
+  --gold: #b08d5f;
+  --gold-text: #7a5c34;
+  --gold-on-dark: #d1b48a;
+  --sand: #f1e9dc;
+  /* ==================== */
+
+  --background: #fcf9f5;
+  --surface: #ffffff;
+  --foreground: #2a2622;
+  --muted: #6f6a64;
+  --border: #f3eee7;
+  --border-strong: #e7e0d5;
+  --tab-rail: color-mix(in srgb, var(--foreground) 10%, transparent);
+
+  --surface-overlay: #ffffff;
+  --elevation-popover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --elevation-modal: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  --item-hover: #f6f1ea;
+  --secondary: #ede6db;
+  --secondary-hover: #e3dacc;
+  --background-hover: #ece5da;
+  --surface-hover: #fdfbf8;
+  --button-hover-surface: #f5f0e8;
+  --button-hover-page: #e2d9cb;
+  --button-hover: var(--button-hover-page);
+
+  --ring-focus: color-mix(in srgb, var(--primary) 10%, transparent);
+  --border-focus: var(--primary);
+
+  /* Badge trạng thái (M7). */
+  --success-bg: #ecfdf5;
+  --success: #007a55;
+  /* Sắp đóng cửa (dưới 60 phút): amber-700, 4.9:1 trên trắng. */
+  --warning: #bb4d00;
+
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --font-sans: var(--app-font);
+  --font-display: var(--display-font);
+
+  --color-gold: var(--gold);
+  --color-gold-text: var(--gold-text);
+  --color-gold-on-dark: var(--gold-on-dark);
+  --color-sand: var(--sand);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
+
+  --color-background: var(--background);
+  --color-background-hover: var(--background-hover);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-overlay: var(--surface-overlay);
+  --color-item-hover: var(--item-hover);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-tab-rail: var(--tab-rail);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-button-hover: var(--button-hover);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+
+  --border-color-focus: var(--border-focus);
+  --ring-color-focus: var(--ring-focus);
+
+  --shadow-popover: var(--elevation-popover);
+  --shadow-modal: var(--elevation-modal);
+}
+
+/* ===== NỀN RÊ CỦA NÚT VIỀN THEO NỀN PHÍA SAU ===== */
+.bg-surface *,
+.bg-surface-overlay * { --button-hover: var(--button-hover-surface); }
+.bg-surface .bg-background *,
+[class~="hover:bg-item-hover"]:hover * { --button-hover: var(--button-hover-page); }
+
+/* ===== THANH CUỘN TỰ ẨN (I18) ===== */
+* { --scrollbar-thumb: transparent; }
+*:hover { --scrollbar-thumb: color-mix(in srgb, var(--foreground) 16%, transparent); }
+.is-scrolling { --scrollbar-thumb: color-mix(in srgb, var(--foreground) 28%, transparent); }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--foreground) 40%, transparent); }
+@supports not selector(::-webkit-scrollbar) {
+  * { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+  *:hover { scrollbar-color: color-mix(in srgb, var(--foreground) 18%, transparent) transparent; }
+  .is-scrolling { scrollbar-color: color-mix(in srgb, var(--foreground) 28%, transparent) transparent; }
+}
+.scrollbar-clean { scrollbar-width: none; }
+.scrollbar-clean::-webkit-scrollbar { display: none; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
