@@ -1,12 +1,19 @@
 {
   "name": "lucie-optical",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "tailwindcss -i src/styles.css -o dist/styles.css --minify",
-    "dev": "tailwindcss -i src/styles.css -o dist/styles.css --watch"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.0",
-    "tailwindcss": "^4.1.0"
+    "@tailwindcss/vite": "^4.3.3",
+    "html-minifier-terser": "^7.2.0",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.4"
+  },
+  "dependencies": {
+    "lucide": "^1.55.0"
   }
 }

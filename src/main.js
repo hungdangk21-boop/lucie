@@ -1,7 +1,27 @@
 // Menu trượt, lọc gọng, trạng thái mở cửa của từng cửa hàng.
 
-const icons = () => window.lucide?.createIcons();
-document.addEventListener("DOMContentLoaded", icons);
+import {
+  Clock,
+  createIcons,
+  Eye,
+  Glasses,
+  ImageOff,
+  Layers,
+  MapPin,
+  Menu,
+  MessageCircle,
+  Phone,
+  RotateCw,
+  ScanEye,
+  ShieldCheck,
+  Star,
+  Sun,
+} from "lucide";
+
+// Chỉ đóng gói icon trang dùng. Thêm data-lucide mới trong HTML thì thêm icon đó vào đây.
+createIcons({
+  icons: { Clock, Eye, Glasses, ImageOff, Layers, MapPin, Menu, MessageCircle, Phone, RotateCw, ScanEye, ShieldCheck, Star, Sun },
+});
 
 // ===== Menu trượt (màn hẹp) =====
 const drawer = document.getElementById("drawer");
