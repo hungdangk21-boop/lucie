@@ -1,26 +1,37 @@
-// Menu trượt, lọc gọng, trạng thái mở cửa của từng cửa hàng.
+// Menu trượt, lọc gọng (loại + size, xem thêm trên màn hẹp, link #frames-*), trạng thái mở cửa của từng cửa hàng.
 
 import {
+  ArrowRight,
+  Briefcase,
+  ChevronDown,
+  CircleDot,
   Clock,
   createIcons,
+  Droplet,
   Eye,
   Glasses,
   ImageOff,
   Layers,
+  Link,
+  Mail,
   MapPin,
   Menu,
   MessageCircle,
   Phone,
   RotateCw,
-  ScanEye,
   ShieldCheck,
+  Sparkles,
   Star,
   Sun,
+  Wrench,
 } from "lucide";
 
 // Chỉ đóng gói icon trang dùng. Thêm data-lucide mới trong HTML thì thêm icon đó vào đây.
 createIcons({
-  icons: { Clock, Eye, Glasses, ImageOff, Layers, MapPin, Menu, MessageCircle, Phone, RotateCw, ScanEye, ShieldCheck, Star, Sun },
+  icons: {
+    ArrowRight, Briefcase, ChevronDown, CircleDot, Clock, Droplet, Eye, Glasses, ImageOff, Layers, Link, Mail,
+    MapPin, Menu, MessageCircle, Phone, RotateCw, ShieldCheck, Sparkles, Star, Sun, Wrench,
+  },
 });
 
 // ===== Menu trượt (màn hẹp) =====
@@ -42,16 +53,99 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && drawer.hasAttribute("data-open")) { setDrawer(false); menuButton.focus(); }
 });
 
-// ===== Lọc gọng: Tất cả / Kính cận / Kính râm =====
-const frameFilter = document.querySelector("[data-frame-filter]");
-frameFilter.addEventListener("click", (event) => {
-  const chip = event.target.closest("[data-filter]");
-  if (!chip) return;
-  for (const other of frameFilter.querySelectorAll("[data-filter]")) other.setAttribute("aria-checked", String(other === chip));
-  for (const card of document.querySelectorAll("[data-frames] [data-kind]")) {
-    card.hidden = chip.dataset.filter !== "all" && card.dataset.kind !== chip.dataset.filter;
+// ===== Lọc gọng: loại (chip cận / râm / trẻ em) và size (ô chọn hẹp / vừa / rộng) =====
+// data-kind trên thẻ gọng có thể nhiều giá trị cách nhau bởi dấu cách, ví dụ "eye kids".
+const filterBar = document.querySelector("[data-frame-filter]");
+const grid = document.querySelector("[data-frames]");
+const noMatch = document.querySelector('[data-state="no-match"]');
+const countLabel = document.querySelector("[data-frame-count]");
+const sizeSelect = document.querySelector('[data-facet-select="size"]');
+const showMore = document.querySelector("[data-show-more]");
+const moreCount = document.querySelector("[data-more-count]");
+const facets = { kind: "all", size: "all" };
+const FRAME_KINDS = ["eye", "sun", "kids"];
+
+// Dưới lg lưới chỉ có 2 cột: hiện 4 mẫu đầu, phần còn lại sau nút "Xem thêm". Đổi bộ lọc thì thu gọn lại.
+const narrowScreen = window.matchMedia("(max-width: 1023px)");
+const COLLAPSED_LIMIT = 4;
+let expanded = false;
+
+function applyFacets() {
+  const matches = [...grid.querySelectorAll("[data-kind]")].filter((card) => {
+    const kindMatch = facets.kind === "all" || card.dataset.kind.split(" ").includes(facets.kind);
+    const sizeMatch = facets.size === "all" || card.dataset.size === facets.size;
+    return kindMatch && sizeMatch;
+  });
+  const limit = narrowScreen.matches && !expanded ? COLLAPSED_LIMIT : Infinity;
+  for (const card of grid.querySelectorAll("[data-kind]")) card.hidden = !matches.slice(0, limit).includes(card);
+  const hiddenCount = Math.max(0, matches.length - limit);
+  showMore.hidden = hiddenCount === 0;
+  moreCount.textContent = hiddenCount;
+  grid.hidden = matches.length === 0;
+  noMatch.hidden = matches.length !== 0;
+  countLabel.textContent = `${matches.length} mẫu`;
+}
+
+document.querySelector('[data-action="show-more"]').addEventListener("click", () => {
+  const cards = [...grid.querySelectorAll("[data-kind]")];
+  const shownBefore = new Set(cards.filter((card) => !card.hidden));
+  expanded = true;
+  applyFacets();
+  // Nút biến mất sau khi mở: chuyển focus vào mẫu đầu tiên vừa hiện để người dùng bàn phím không bị lạc.
+  const firstRevealed = cards.find((card) => !card.hidden && !shownBefore.has(card));
+  if (firstRevealed) {
+    firstRevealed.tabIndex = -1;
+    firstRevealed.focus({ preventScroll: true });
   }
 });
+narrowScreen.addEventListener("change", applyFacets);
+
+function setFacet(facet, value) {
+  facets[facet] = value;
+  expanded = false;
+  for (const chip of filterBar.querySelectorAll(`[data-facet="${facet}"]`)) {
+    chip.setAttribute("aria-pressed", String(chip.dataset.value === value));
+  }
+  if (facet === "size") sizeSelect.value = value;
+  applyFacets();
+}
+
+filterBar.addEventListener("click", (event) => {
+  const chip = event.target.closest("[data-facet]");
+  if (!chip) return;
+  setFacet(chip.dataset.facet, chip.dataset.value);
+  if (chip.dataset.facet === "kind") history.replaceState(null, "", chip.dataset.value === "all" ? "#frames" : `#frames-${chip.dataset.value}`);
+});
+
+sizeSelect.addEventListener("change", () => setFacet("size", sizeSelect.value));
+
+document.querySelector('[data-action="reset-facets"]').addEventListener("click", () => {
+  setFacet("kind", "all");
+  setFacet("size", "all");
+  history.replaceState(null, "", "#frames");
+  filterBar.querySelector("[data-facet]").focus();
+});
+
+// #frames-eye, #frames-sun, #frames-kids: mở lưới gọng đã lọc sẵn (menu, ô danh mục, link chia sẻ).
+function openFramesFromHash() {
+  const kind = location.hash.replace("#frames-", "");
+  if (!FRAME_KINDS.includes(kind)) return;
+  setFacet("size", "all");
+  setFacet("kind", kind);
+  document.getElementById("frames").scrollIntoView();
+}
+
+// Bấm lại cùng một link không đổi hash nên không có hashchange: tự xử lý click.
+document.addEventListener("click", (event) => {
+  const link = event.target.closest('a[href^="#frames-"]');
+  if (!link) return;
+  event.preventDefault();
+  history.pushState(null, "", link.getAttribute("href"));
+  openFramesFromHash();
+});
+window.addEventListener("popstate", openFramesFromHash);
+applyFacets();
+openFramesFromHash();
 
 // ===== Trạng thái mở cửa =====
 // data-hours trên mỗi cửa hàng: 7 cặp [mở, đóng] theo giờ Việt Nam, chỉ số 0 là Chủ nhật; null là nghỉ cả ngày.

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" class="scroll-pt-28">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,24 +14,28 @@
     <link rel="stylesheet" href="/src/styles.css" />
     <script type="module" src="/src/main.js"></script>
   </head>
+  <!--
+    Bố cục trang, mỗi khối một ý:
+    1 Hero (một câu, hai nút) → 2 Cam kết → 3 Gọng kính → 4 Tròng, kính áp tròng, phụ kiện
+    → 5 Đo mắt + quy trình + khúc xạ viên (khối tối) → 6 Đánh giá + con số → 7 Cửa hàng (chốt hành động).
+  -->
   <body class="bg-background font-sans text-sm text-pretty text-foreground">
-    <header class="sticky top-0 z-30 border-b border-border-strong bg-background">
+    <header class="sticky top-0 z-30 border-b border-border-strong bg-background/95 backdrop-blur">
       <div class="mx-auto flex h-24 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <!-- Logo: src/assets/logo-lockup.png, cắt và tách nền từ design/logo-source.png. -->
         <a href="/" class="flex shrink-0 items-center" aria-label="Lucie Eyewear, trang chủ">
           <img src="/src/assets/logo-lockup.png" alt="Lucie Eyewear" width="386" height="240" class="h-20 w-auto" />
         </a>
         <nav class="hidden items-center gap-1 lg:flex" aria-label="Chính">
-          <a href="#exam" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Đo mắt</a>
           <a href="#frames" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Gọng kính</a>
-          <a href="#frames" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Kính râm có độ</a>
+          <a href="#frames-sun" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Kính râm có độ</a>
           <a href="#lenses" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Tròng kính</a>
-          <a href="#stores" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Cửa hàng</a>
+          <a href="#contacts" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Kính áp tròng</a>
+          <a href="#exam" class="flex h-10 items-center rounded-xl px-3 text-sm font-medium whitespace-nowrap text-muted transition-colors hover:bg-foreground/5 hover:text-foreground">Đo mắt</a>
         </nav>
         <div class="flex shrink-0 items-center gap-2">
-          <a href="tel:18006789" class="hidden min-h-10 items-center gap-2 rounded-xl px-3 text-sm font-medium text-muted transition-colors hover:bg-foreground/5 hover:text-foreground md:inline-flex lg:hidden xl:inline-flex"><i data-lucide="phone" class="size-4 shrink-0 text-gold-text"></i>Hotline 1800 6789</a>
-          <a href="#stores" class="hidden min-h-10 items-center justify-center rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover sm:inline-flex">Ghé cửa hàng</a>
-          <button type="button" data-menu-open aria-label="Mở menu" title="Mở menu" aria-controls="drawer" aria-expanded="false" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-xl border border-border-strong bg-surface text-muted outline-hidden transition-colors hover:bg-button-hover hover:text-foreground lg:hidden"><i data-lucide="menu" class="size-4"></i></button>
+          <a href="tel:18006789" class="hidden min-h-10 items-center gap-2 rounded-xl px-3 text-sm font-medium text-muted transition-colors hover:bg-foreground/5 hover:text-foreground md:inline-flex lg:hidden xl:inline-flex"><i data-lucide="phone" class="size-4 shrink-0 text-gold-text"></i>1800 6789</a>
+          <a href="#stores" class="hidden min-h-10 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover sm:inline-flex"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Cửa hàng</a>
+          <button type="button" data-menu-open aria-label="Mở menu" title="Mở menu" aria-controls="drawer" aria-expanded="false" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-xl border border-border-strong bg-surface text-muted outline-hidden transition-colors hover:bg-button-hover hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary lg:hidden"><i data-lucide="menu" class="size-4"></i></button>
         </div>
       </div>
     </header>
@@ -42,20 +46,21 @@
       <div class="mb-2 flex h-16 items-center px-2">
         <img src="/src/assets/logo-lockup.png" alt="Lucie Eyewear" width="386" height="240" class="h-14 w-auto" />
       </div>
-      <a href="#exam" aria-current="page" class="flex h-10 items-center gap-3 rounded-xl bg-secondary px-3 text-sm font-medium text-foreground"><i data-lucide="eye" class="size-4 shrink-0"></i>Đo mắt</a>
-      <a href="#frames" class="flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="glasses" class="size-4 shrink-0"></i>Gọng kính</a>
-      <a href="#frames" class="flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="sun" class="size-4 shrink-0"></i>Kính râm có độ</a>
-      <a href="#lenses" class="flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="layers" class="size-4 shrink-0"></i>Tròng kính</a>
-      <a href="#stores" class="flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Cửa hàng</a>
+      <a href="#frames" class="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="glasses" class="size-4 shrink-0"></i>Gọng kính</a>
+      <a href="#frames-sun" class="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="sun" class="size-4 shrink-0"></i>Kính râm có độ</a>
+      <a href="#lenses" class="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="layers" class="size-4 shrink-0"></i>Tròng kính</a>
+      <a href="#contacts" class="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="circle-dot" class="size-4 shrink-0"></i>Kính áp tròng, phụ kiện</a>
+      <a href="#exam" class="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="eye" class="size-4 shrink-0"></i>Đo mắt miễn phí</a>
+      <a href="#stores" class="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Cửa hàng</a>
       <div class="mt-auto border-t border-border-strong pt-3">
-        <a href="tel:18006789" class="flex h-10 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="phone" class="size-4 shrink-0"></i>Hotline 1800 6789</a>
+        <a href="tel:18006789" class="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium text-muted hover:bg-item-hover hover:text-foreground"><i data-lucide="phone" class="size-4 shrink-0"></i>Hotline 1800 6789</a>
       </div>
     </aside>
 
     <main>
-      <!-- Hero: tiêu đề lớn kiểu poster, sản phẩm trên vòng cung, đặt lịch bên phải -->
-      <section class="overflow-hidden border-b border-border-strong">
-        <div class="mx-auto grid max-w-6xl gap-8 px-4 pt-10 pb-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-center">
+      <!-- 1. Hero: một câu, một nút chính. Sản phẩm trên vòng cung kem bên phải. -->
+      <section class="overflow-hidden">
+        <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-12 pb-16 sm:px-6 lg:grid-cols-2 lg:pt-16 lg:pb-20">
           <div class="flex min-w-0 flex-col items-center gap-6 text-center lg:items-start lg:text-left">
             <p class="flex items-center gap-4 text-xs font-medium tracking-[0.4em] text-gold-text uppercase">
               <span class="h-px w-10 bg-gold" aria-hidden="true"></span>A clearer you<span class="h-px w-10 bg-gold lg:hidden" aria-hidden="true"></span>
@@ -64,244 +69,302 @@
               <span>Kính cận đẹp</span>
               <span class="bg-primary px-4 py-1 text-primary-foreground">Nhìn rõ hơn</span>
             </h1>
-            <p class="font-display text-xs font-light tracking-[0.2em] uppercase sm:text-base sm:tracking-[0.3em]">Đo mắt · Kính cận · Kính râm có độ</p>
-
-            <!-- Sân khấu sản phẩm: vòng cung kem, kính, bong bóng ưu đãi -->
-            <div class="relative mt-2 aspect-[16/9] w-full max-w-xl">
-              <div class="absolute inset-x-[-15%] top-[38%] bottom-[-60%] rounded-[50%] bg-sand" aria-hidden="true"></div>
-              <img src="https://images.unsplash.com/photo-1584036553516-bf83210aa16c?w=1200&h=675&q=80&auto=format&fit=crop" alt="Kính râm có độ gọng nửa viền" width="1200" height="675" class="absolute inset-x-[4%] top-[8%] w-[92%] mix-blend-multiply [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_72%)]" />
-              <span class="absolute top-[2%] right-[2%] -rotate-6 rounded-xl bg-primary px-4 py-2 font-display text-base font-extrabold text-primary-foreground uppercase after:absolute after:-bottom-2 after:left-5 after:size-4 after:rotate-45 after:bg-primary sm:text-lg">Đo mắt miễn phí</span>
+            <p class="max-w-md text-base text-muted">Đo mắt miễn phí, chọn trong hơn 400 mẫu gọng, nhận kính ngay trong ngày. Ghé lúc nào cũng được, không cần hẹn.</p>
+            <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <a href="#stores" class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground outline-hidden transition-colors hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Tìm cửa hàng gần bạn</a>
+              <a href="#frames" class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-6 text-sm font-semibold outline-hidden transition-colors hover:bg-button-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Xem gọng kính</a>
             </div>
-
-            <ul class="relative flex flex-col items-center gap-2 text-sm md:flex-row md:flex-wrap md:gap-x-6 lg:flex-col lg:items-start xl:flex-row">
-              <li class="flex items-center gap-2"><i data-lucide="star" class="size-4 shrink-0 fill-current text-gold-text"></i><span><b class="font-semibold">4,9</b> <span class="text-muted">· 1.248 đánh giá Google</span></span></li>
-              <li class="flex items-center gap-2"><i data-lucide="clock" class="size-4 shrink-0 text-gold-text"></i>Nhận kính trong ngày</li>
-              <li class="flex items-center gap-2"><i data-lucide="shield-check" class="size-4 shrink-0 text-gold-text"></i>Bảo hành 12 tháng</li>
-            </ul>
+            <p class="flex items-center gap-2 text-sm"><i data-lucide="star" class="size-4 shrink-0 fill-current text-gold-text"></i><b class="font-semibold">4,9</b><span class="text-muted">· 1.248 đánh giá Google</span></p>
           </div>
 
-          <!-- Ghé cửa hàng: không cần hẹn. Trạng thái mở cửa tính trong main.js từ data-hours (giờ Việt Nam, chỉ số 0 là Chủ nhật). Đổi giờ thì sửa ở đây và dòng giờ hiển thị bên dưới. -->
-          <div id="stores" class="min-w-0 rounded-2xl border border-border-strong bg-surface p-5">
-            <header class="mb-4">
-              <h2 class="font-display text-base font-semibold">Ghé cửa hàng</h2>
-              <p class="mt-1 text-sm text-muted">Không cần hẹn trước · Đo mắt miễn phí</p>
-            </header>
-            <ul class="flex flex-col divide-y divide-border-strong">
-              <li class="flex flex-col gap-3 pb-4" data-hours='[["08:30","21:30"],["08:30","21:30"],["08:30","21:30"],["08:30","21:30"],["08:30","21:30"],["08:30","21:30"],["08:30","21:30"]]'>
-                <div class="min-w-0">
-                  <b class="block text-base font-semibold">Lê Lợi</b>
-                  <span class="mt-1 block text-sm text-muted">214 Lê Lợi, P. Bến Thành, TP.HCM</span>
-                  <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"><span class="flex items-center gap-2"><span data-status-dot class="size-2 shrink-0 rounded-full bg-success" aria-hidden="true"></span><span data-status-label class="font-medium text-success">Đang mở cửa</span></span><span class="text-muted tabular-nums">T2–CN đến 21:30</span></span>
-                </div>
-                <div class="flex gap-2">
-                  <a href="https://www.google.com/maps/dir/?api=1&destination=214+L%C3%AA+L%E1%BB%A3i%2C+B%E1%BA%BFn+Th%C3%A0nh%2C+TP.HCM" target="_blank" rel="noopener" class="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 py-2 text-sm font-medium transition-colors hover:bg-button-hover"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Chỉ đường</a>
-                  <a href="tel:0909123456" class="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 py-2 text-sm font-medium tabular-nums transition-colors hover:bg-button-hover"><i data-lucide="phone" class="size-4 shrink-0"></i>0909 123 456</a>
-                </div>
-              </li>
-              <li class="flex flex-col gap-3 pt-4" data-hours='[["09:00","18:00"],["09:00","21:00"],["09:00","21:00"],["09:00","21:00"],["09:00","21:00"],["09:00","21:00"],["09:00","21:00"]]'>
-                <div class="min-w-0">
-                  <b class="block text-base font-semibold">Nguyễn Thị Thập</b>
-                  <span class="mt-1 block text-sm text-muted">88 Nguyễn Thị Thập, P. Tân Hưng, TP.HCM</span>
-                  <span class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"><span class="flex items-center gap-2"><span data-status-dot class="size-2 shrink-0 rounded-full bg-success" aria-hidden="true"></span><span data-status-label class="font-medium text-success">Đang mở cửa</span></span><span class="text-muted tabular-nums">T2–T7 đến 21:00, CN đến 18:00</span></span>
-                </div>
-                <div class="flex gap-2">
-                  <a href="https://www.google.com/maps/dir/?api=1&destination=88+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp%2C+T%C3%A2n+H%C6%B0ng%2C+TP.HCM" target="_blank" rel="noopener" class="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 py-2 text-sm font-medium transition-colors hover:bg-button-hover"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Chỉ đường</a>
-                  <a href="tel:0938765432" class="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 py-2 text-sm font-medium tabular-nums transition-colors hover:bg-button-hover"><i data-lucide="phone" class="size-4 shrink-0"></i>0938 765 432</a>
-                </div>
-              </li>
-            </ul>
-            <!-- Zalo: zalo.me/<số điện thoại đã đăng ký Zalo>, hoặc link Zalo OA nếu cửa hàng có. -->
-            <a href="https://zalo.me/0909123456" target="_blank" rel="noopener" class="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover md:min-h-10"><i data-lucide="message-circle" class="size-4 shrink-0"></i>Hỏi nhanh qua Zalo</a>
+          <div class="relative mx-auto aspect-[4/3] w-full max-w-xl">
+            <div class="absolute inset-x-[-10%] top-[30%] bottom-[-45%] rounded-[50%] bg-sand" aria-hidden="true"></div>
+            <img src="https://images.unsplash.com/photo-1584036553516-bf83210aa16c?w=1200&h=900&q=80&auto=format&fit=crop" alt="Kính râm có độ gọng nửa viền" width="1200" height="900" class="absolute inset-0 size-full object-contain mix-blend-multiply [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_72%)]" />
+            <span class="absolute top-[4%] right-[4%] -rotate-6 rounded-xl bg-primary px-4 py-2 font-display text-base font-extrabold text-primary-foreground uppercase after:absolute after:-bottom-2 after:left-5 after:size-4 after:rotate-45 after:bg-primary sm:text-lg">Đo mắt miễn phí</span>
           </div>
         </div>
       </section>
 
-      <!-- Dịch vụ -->
-      <section id="exam" class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
-        <h2 class="mb-6 font-display text-xl font-bold">Mọi thứ cho đôi mắt, tại một nơi</h2>
-        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <a href="#stores" class="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-border-strong">
-            <span class="flex size-8 items-center justify-center rounded-lg bg-sand text-gold-text"><i data-lucide="eye" class="size-4"></i></span>
-            <b class="text-base font-semibold">Đo mắt</b>
-            <span class="text-sm text-muted">Đo độ cận, loạn, viễn bằng máy hiện đại. Ghé là đo, không cần hẹn.</span>
-            <span class="mt-auto text-sm font-medium">15–20 phút · Miễn phí</span>
-          </a>
-          <a href="#frames" class="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-border-strong">
-            <span class="flex size-8 items-center justify-center rounded-lg bg-sand text-gold-text"><i data-lucide="glasses" class="size-4"></i></span>
-            <b class="text-base font-semibold">Kính cận</b>
-            <span class="text-sm text-muted">Hơn 400 mẫu gọng tại cửa hàng, mài lắp tròng ngay tại chỗ.</span>
-            <span class="mt-auto text-sm font-medium">Từ 590.000đ kèm tròng</span>
-          </a>
-          <a href="#frames" class="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-border-strong">
-            <span class="flex size-8 items-center justify-center rounded-lg bg-sand text-gold-text"><i data-lucide="sun" class="size-4"></i></span>
-            <b class="text-base font-semibold">Kính râm có độ</b>
-            <span class="text-sm text-muted">Tròng râm hoặc phân cực làm theo đúng độ của bạn.</span>
-            <span class="mt-auto text-sm font-medium">Từ 890.000đ</span>
-          </a>
-          <a href="#lenses" class="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-border-strong">
-            <span class="flex size-8 items-center justify-center rounded-lg bg-sand text-gold-text"><i data-lucide="scan-eye" class="size-4"></i></span>
-            <b class="text-base font-semibold">Kiểm soát cận thị cho trẻ</b>
-            <span class="text-sm text-muted">Khám định kỳ và tròng giúp làm chậm tăng độ khi con lớn.</span>
-            <span class="mt-auto text-sm font-medium">Từ 6–17 tuổi</span>
-          </a>
-        </div>
+      <!-- 2. Cam kết dịch vụ -->
+      <section class="border-y border-border-strong bg-surface">
+        <ul class="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-6 px-4 py-8 sm:px-6 lg:grid-cols-4">
+          <li class="flex flex-col gap-2 sm:flex-row sm:gap-3"><span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sand text-gold-text"><i data-lucide="eye" class="size-5"></i></span><span class="min-w-0"><b class="block text-sm font-semibold">Đo mắt miễn phí</b><span class="mt-0.5 block text-sm text-muted">15–20 phút</span></span></li>
+          <li class="flex flex-col gap-2 sm:flex-row sm:gap-3"><span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sand text-gold-text"><i data-lucide="clock" class="size-5"></i></span><span class="min-w-0"><b class="block text-sm font-semibold">Nhận kính trong ngày</b><span class="mt-0.5 block text-sm text-muted">Tròng đặt riêng <span class="whitespace-nowrap">2–3 ngày</span></span></span></li>
+          <li class="flex flex-col gap-2 sm:flex-row sm:gap-3"><span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sand text-gold-text"><i data-lucide="shield-check" class="size-5"></i></span><span class="min-w-0"><b class="block text-sm font-semibold">Bảo hành 12 tháng</b><a href="#policies" class="mt-0.5 inline-flex min-h-6 items-center text-sm text-muted underline-offset-2 hover:text-foreground hover:underline">Xem chính sách</a></span></li>
+          <li class="flex flex-col gap-2 sm:flex-row sm:gap-3"><span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sand text-gold-text"><i data-lucide="wrench" class="size-5"></i></span><span class="min-w-0"><b class="block text-sm font-semibold">Chăm kính trọn đời</b><span class="mt-0.5 block text-sm text-muted">Chỉnh gọng, vệ sinh miễn phí</span></span></li>
+        </ul>
       </section>
 
-      <!-- Tròng kính -->
-      <section id="lenses" class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
-        <h2 class="font-display text-xl font-bold">Tròng kính cho người cận</h2>
-        <p class="mt-1 mb-6 text-sm text-muted">Cận càng nặng càng nên chọn tròng mỏng. Nhân viên sẽ tư vấn sau khi đo mắt.</p>
-        <div class="grid gap-3 md:grid-cols-3">
-          <div class="flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5">
-            <span class="text-sm text-muted">Cận dưới 2 độ</span>
-            <b class="text-base font-semibold">Tiêu chuẩn 1.56</b>
-            <span class="text-sm text-muted">Chống trầy, chống loá.</span>
-            <span class="mt-auto pt-2 text-sm font-medium">Đã gồm trong giá gọng</span>
-          </div>
-          <div class="flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5">
-            <span class="text-sm text-muted">Cận 2–6 độ</span>
-            <b class="text-base font-semibold">Mỏng 1.67</b>
-            <span class="text-sm text-muted">Mép tròng mỏng hơn khoảng 30%. Được chọn nhiều nhất.</span>
-            <span class="mt-auto pt-2 text-sm font-medium">+600.000đ</span>
-          </div>
-          <div class="flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5">
-            <span class="text-sm text-muted">Cận trên 6 độ</span>
-            <b class="text-base font-semibold">Siêu mỏng 1.74</b>
-            <span class="text-sm text-muted">Tròng mỏng nhất, cho người cận nặng. Đặt riêng 2–3 ngày.</span>
-            <span class="mt-auto pt-2 text-sm font-medium">+1.200.000đ</span>
-          </div>
-        </div>
-        <div class="mt-3 flex flex-col gap-1 rounded-2xl border border-border bg-surface px-5 py-4 text-sm lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-6">
-          <span class="font-medium">Tuỳ chọn thêm</span>
-          <span><span class="text-muted">Lọc ánh sáng xanh</span> +250.000đ</span>
-          <span><span class="text-muted">Đổi màu khi ra nắng</span> +700.000đ</span>
-          <span><span class="text-muted">Râm phân cực</span> +600.000đ</span>
-        </div>
-      </section>
-
-      <!-- Gọng kính -->
-      <section id="frames" class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
-        <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+      <section id="frames" class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+        <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h2 class="font-display text-xl font-bold">Gọng kính và kính râm có độ</h2>
-            <p class="mt-1 text-sm text-muted">Mọi mẫu gọng đều lắp được tròng theo độ. Thử trực tiếp tại cửa hàng.</p>
+            <p class="text-xs font-medium tracking-[0.3em] text-gold-text uppercase">Gọng kính</p>
+            <h2 class="mt-2 font-display text-2xl font-bold sm:text-3xl">Chọn gọng, lắp tròng theo độ</h2>
+            <p class="mt-2 text-sm text-muted">Giá đã gồm tròng. Thử trực tiếp tại cửa hàng.</p>
           </div>
-          <div class="flex gap-2" role="radiogroup" aria-label="Loại kính" data-frame-filter>
-            <button type="button" role="radio" aria-checked="true" data-filter="all" class="inline-flex h-9 cursor-pointer items-center rounded-full px-3.5 text-sm font-medium outline-hidden transition-colors aria-checked:bg-primary aria-checked:text-primary-foreground not-aria-checked:bg-foreground/5 not-aria-checked:text-foreground/70 not-aria-checked:hover:bg-foreground/10 not-aria-checked:hover:text-foreground">Tất cả</button>
-            <button type="button" role="radio" aria-checked="false" data-filter="eye" class="inline-flex h-9 cursor-pointer items-center rounded-full px-3.5 text-sm font-medium outline-hidden transition-colors aria-checked:bg-primary aria-checked:text-primary-foreground not-aria-checked:bg-foreground/5 not-aria-checked:text-foreground/70 not-aria-checked:hover:bg-foreground/10 not-aria-checked:hover:text-foreground">Kính cận</button>
-            <button type="button" role="radio" aria-checked="false" data-filter="sun" class="inline-flex h-9 cursor-pointer items-center rounded-full px-3.5 text-sm font-medium outline-hidden transition-colors aria-checked:bg-primary aria-checked:text-primary-foreground not-aria-checked:bg-foreground/5 not-aria-checked:text-foreground/70 not-aria-checked:hover:bg-foreground/10 not-aria-checked:hover:text-foreground">Kính râm</button>
+          <div class="flex flex-wrap items-center gap-2" data-frame-filter>
+            <div role="group" aria-label="Loại kính" class="flex flex-wrap gap-2">
+              <button type="button" data-facet="kind" data-value="all" aria-pressed="true" class="inline-flex min-h-11 cursor-pointer items-center rounded-full px-4 text-sm font-medium outline-hidden transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:min-h-9 aria-pressed:bg-primary aria-pressed:text-primary-foreground not-aria-pressed:bg-foreground/5 not-aria-pressed:text-foreground/70 not-aria-pressed:hover:bg-foreground/10 not-aria-pressed:hover:text-foreground">Tất cả</button>
+              <button type="button" data-facet="kind" data-value="eye" aria-pressed="false" class="inline-flex min-h-11 cursor-pointer items-center rounded-full px-4 text-sm font-medium outline-hidden transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:min-h-9 aria-pressed:bg-primary aria-pressed:text-primary-foreground not-aria-pressed:bg-foreground/5 not-aria-pressed:text-foreground/70 not-aria-pressed:hover:bg-foreground/10 not-aria-pressed:hover:text-foreground">Kính cận</button>
+              <button type="button" data-facet="kind" data-value="sun" aria-pressed="false" class="inline-flex min-h-11 cursor-pointer items-center rounded-full px-4 text-sm font-medium outline-hidden transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:min-h-9 aria-pressed:bg-primary aria-pressed:text-primary-foreground not-aria-pressed:bg-foreground/5 not-aria-pressed:text-foreground/70 not-aria-pressed:hover:bg-foreground/10 not-aria-pressed:hover:text-foreground">Kính râm</button>
+              <button type="button" data-facet="kind" data-value="kids" aria-pressed="false" class="inline-flex min-h-11 cursor-pointer items-center rounded-full px-4 text-sm font-medium outline-hidden transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:min-h-9 aria-pressed:bg-primary aria-pressed:text-primary-foreground not-aria-pressed:bg-foreground/5 not-aria-pressed:text-foreground/70 not-aria-pressed:hover:bg-foreground/10 not-aria-pressed:hover:text-foreground">Trẻ em</button>
+            </div>
+            <select data-facet-select="size" aria-label="Size gọng" class="min-h-11 cursor-pointer rounded-full bg-foreground/5 px-4 text-sm font-medium text-foreground/70 outline-hidden hover:bg-foreground/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:min-h-9"><option value="all">Mọi size</option><option value="narrow">Size hẹp</option><option value="medium">Size vừa</option><option value="wide">Size rộng</option></select>
           </div>
+          <p data-frame-count aria-live="polite" class="sr-only">8 mẫu</p>
         </div>
-        <!-- Bốn trạng thái của danh sách gọng: bật đúng một khối bằng thuộc tính hidden. -->
-        <div data-state="data" class="grid grid-cols-2 gap-3 lg:grid-cols-3" data-frames>
-          <article data-kind="eye" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
-            <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&q=80&auto=format&fit=crop" alt="Gọng Hudson nửa viền" loading="lazy" class="aspect-[4/3] w-full bg-background object-cover" />
-            <span class="flex flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Hudson</b><span class="truncate text-sm text-muted">Nửa viền · nhựa và kim loại</span><span class="text-sm font-medium">890.000đ kèm tròng</span></span>
+
+        <!-- Bốn trạng thái của danh sách gọng: bật đúng một khối bằng thuộc tính hidden. Size, SKU, số đo (data-dims: mắt-cầu-càng), chất liệu và mẫu Bubu, Marina là dữ liệu mẫu. -->
+        <div data-state="data" class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" data-frames>
+          <article data-kind="eye" data-size="medium" data-sku="LUC-HUD-52" data-dims="52-18-145" data-material="mixed" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+            <span class="relative block"><img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=800&q=80&auto=format&fit=crop" alt="Gọng Hudson nửa viền" loading="lazy" class="aspect-square w-full bg-background object-cover" /><span class="absolute top-3 left-3 rounded-full bg-surface px-2 py-0.5 text-xs font-semibold tabular-nums">−15%</span></span>
+            <span class="flex flex-1 flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Hudson</b><span class="text-sm text-muted">Browline · Size vừa</span><span class="mt-auto flex flex-wrap items-baseline gap-x-2 pt-2 text-sm"><span class="font-semibold tabular-nums">756.500đ</span><s class="text-muted tabular-nums"><span class="sr-only">Giá gốc </span>890.000đ</s></span></span>
           </article>
-          <article data-kind="sun" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
-            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80&auto=format&fit=crop" alt="Kính râm Sol tròng tròn" loading="lazy" class="aspect-[4/3] w-full bg-background object-cover" />
-            <span class="flex flex-col gap-1 p-4"><span class="flex flex-wrap items-center gap-x-2 gap-y-1"><b class="min-w-0 text-base font-semibold">Sol Round</b><span class="shrink-0 rounded-full bg-sand px-2 py-0.5 text-xs font-medium text-gold-text">Râm có độ</span></span><span class="truncate text-sm text-muted">Tròn · kim loại vàng</span><span class="text-sm font-medium">1.190.000đ kèm tròng râm</span></span>
+          <article data-kind="sun" data-size="medium" data-sku="LUC-SOL-50" data-dims="50-21-145" data-material="metal" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80&auto=format&fit=crop" alt="Kính râm Sol tròng tròn" loading="lazy" class="aspect-square w-full bg-background object-cover" />
+            <span class="flex flex-1 flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Sol Round</b><span class="text-sm text-muted">Tròn · Size vừa</span><span class="mt-auto pt-2 text-sm font-semibold tabular-nums">1.190.000đ</span></span>
           </article>
-          <article data-kind="eye" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
-            <img src="https://images.unsplash.com/photo-1625591339971-4c9a87a66871?w=800&q=80&auto=format&fit=crop" alt="Gọng Ada nhựa trong" loading="lazy" class="aspect-[4/3] w-full bg-background object-cover" />
-            <span class="flex flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Ada</b><span class="truncate text-sm text-muted">Tròn · nhựa trong</span><span class="text-sm font-medium">590.000đ kèm tròng</span></span>
+          <article data-kind="eye" data-size="narrow" data-sku="LUC-ADA-48" data-dims="48-20-140" data-material="acetate" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+            <img src="https://images.unsplash.com/photo-1625591339971-4c9a87a66871?w=800&q=80&auto=format&fit=crop" alt="Gọng Ada nhựa trong" loading="lazy" class="aspect-square w-full bg-background object-cover" />
+            <span class="flex flex-1 flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Ada</b><span class="text-sm text-muted">Tròn · Size hẹp</span><span class="mt-auto pt-2 text-sm font-semibold tabular-nums">590.000đ</span></span>
           </article>
-          <article data-kind="sun" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
-            <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=800&q=80&auto=format&fit=crop" alt="Kính râm Riviera mắt mèo" loading="lazy" class="aspect-[4/3] w-full bg-background object-cover" />
-            <span class="flex flex-col gap-1 p-4"><span class="flex flex-wrap items-center gap-x-2 gap-y-1"><b class="line-clamp-2 min-w-0 text-base font-semibold" title="Riviera Oversized Cat-Eye Polarized">Riviera Oversized Cat-Eye Polarized</b><span class="shrink-0 rounded-full bg-sand px-2 py-0.5 text-xs font-medium text-gold-text">Râm có độ</span></span><span class="truncate text-sm text-muted">Mắt mèo · nhựa màu hồng</span><span class="text-sm font-medium">1.690.000đ kèm tròng phân cực</span></span>
+          <article data-kind="sun" data-size="wide" data-sku="LUC-RIV-55" data-dims="55-17-145" data-material="acetate" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+            <span class="relative block"><img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=800&q=80&auto=format&fit=crop" alt="Kính râm Riviera mắt mèo, tròng phân cực" loading="lazy" class="aspect-square w-full bg-background object-cover" /><span class="absolute top-3 left-3 rounded-full bg-surface px-2 py-0.5 text-xs font-semibold tabular-nums">−20%</span></span>
+            <span class="flex flex-1 flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Riviera</b><span class="text-sm text-muted">Mắt mèo · Size rộng</span><span class="mt-auto flex flex-wrap items-baseline gap-x-2 pt-2 text-sm"><span class="font-semibold tabular-nums">1.352.000đ</span><s class="text-muted tabular-nums"><span class="sr-only">Giá gốc </span>1.690.000đ</s></span></span>
           </article>
-          <article data-kind="eye" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
-            <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?w=800&q=80&auto=format&fit=crop" alt="Gọng Monroe nửa viền đen" loading="lazy" class="aspect-[4/3] w-full bg-background object-cover" />
-            <span class="flex flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Monroe</b><span class="truncate text-sm text-muted">Nửa viền · đen nhám</span><span class="text-sm font-medium">790.000đ kèm tròng</span></span>
+          <article data-kind="eye" data-size="medium" data-sku="LUC-MON-53" data-dims="53-19-145" data-material="mixed" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+            <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?w=800&q=80&auto=format&fit=crop" alt="Gọng Monroe nửa viền đen" loading="lazy" class="aspect-square w-full bg-background object-cover" />
+            <span class="flex flex-1 flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Monroe</b><span class="text-sm text-muted">Browline · Size vừa</span><span class="mt-auto pt-2 text-sm font-semibold tabular-nums">790.000đ</span></span>
           </article>
-          <article data-kind="eye" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
-            <span class="flex aspect-[4/3] w-full flex-col items-center justify-center gap-2 bg-background text-sm text-muted"><i data-lucide="image-off" class="size-5"></i>Chưa có ảnh</span>
-            <span class="flex flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Kepler Titanium</b><span class="truncate text-sm text-muted">Không viền · titan</span><span class="text-sm font-medium">2.190.000đ kèm tròng</span></span>
+          <article data-kind="sun" data-size="medium" data-sku="LUC-MAR-52" data-dims="52-19-145" data-material="acetate" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+            <img src="https://images.unsplash.com/photo-1577744486770-020ab432da65?w=800&q=80&auto=format&fit=crop" alt="Kính râm Marina" loading="lazy" class="aspect-square w-full bg-background object-cover" />
+            <span class="flex flex-1 flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Marina</b><span class="text-sm text-muted">Vuông · Size vừa</span><span class="mt-auto pt-2 text-sm font-semibold tabular-nums">1.090.000đ</span></span>
+          </article>
+          <article data-kind="eye" data-size="medium" data-sku="LUC-KEP-54" data-dims="54-17-140" data-material="titanium" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+            <img src="https://images.unsplash.com/photo-1614715838608-dd527c46231d?w=800&q=80&auto=format&fit=crop" alt="Gọng Kepler titan" loading="lazy" class="aspect-square w-full bg-background object-cover" />
+            <span class="flex flex-1 flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Kepler Titanium</b><span class="text-sm text-muted">Không viền · Size vừa</span><span class="mt-auto pt-2 text-sm font-semibold tabular-nums">2.190.000đ</span></span>
+          </article>
+          <article data-kind="eye kids" data-size="narrow" data-sku="LUC-BUB-44" data-dims="44-16-125" data-material="acetate" class="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface">
+            <span class="flex aspect-square w-full flex-col items-center justify-center gap-2 bg-background text-sm text-muted"><i data-lucide="image-off" class="size-5"></i>Chưa có ảnh</span>
+            <span class="flex flex-1 flex-col gap-1 p-4"><b class="truncate text-base font-semibold">Bubu</b><span class="text-sm text-muted">Trẻ em · Size hẹp</span><span class="mt-auto pt-2 text-sm font-semibold tabular-nums">490.000đ</span></span>
           </article>
         </div>
-        <div data-state="loading" hidden class="grid grid-cols-2 gap-3 lg:grid-cols-3" aria-busy="true" aria-label="Đang tải gọng kính">
-          <div class="overflow-hidden rounded-2xl border border-border bg-surface"><div class="aspect-[4/3] animate-pulse bg-background motion-reduce:animate-none"></div><div class="flex flex-col gap-2 p-4"><span class="h-5 w-24 animate-pulse rounded bg-background"></span><span class="h-4 w-32 animate-pulse rounded bg-background"></span></div></div>
-          <div class="overflow-hidden rounded-2xl border border-border bg-surface"><div class="aspect-[4/3] animate-pulse bg-background motion-reduce:animate-none"></div><div class="flex flex-col gap-2 p-4"><span class="h-5 w-24 animate-pulse rounded bg-background"></span><span class="h-4 w-32 animate-pulse rounded bg-background"></span></div></div>
-          <div class="overflow-hidden rounded-2xl border border-border bg-surface"><div class="aspect-[4/3] animate-pulse bg-background motion-reduce:animate-none"></div><div class="flex flex-col gap-2 p-4"><span class="h-5 w-24 animate-pulse rounded bg-background"></span><span class="h-4 w-32 animate-pulse rounded bg-background"></span></div></div>
+        <div data-show-more hidden class="mt-6 flex justify-center">
+          <button type="button" data-action="show-more" class="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-5 text-sm font-medium outline-hidden transition-colors hover:bg-button-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"><span>Xem thêm <span data-more-count>4</span> mẫu</span><i data-lucide="chevron-down" class="size-4 shrink-0"></i></button>
+        </div>
+        <div data-state="loading" hidden class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" aria-busy="true" aria-label="Đang tải gọng kính">
+          <div class="overflow-hidden rounded-2xl border border-border bg-surface"><div class="aspect-square animate-pulse bg-background motion-reduce:animate-none"></div><div class="flex flex-col gap-2 p-4"><span class="h-5 w-24 animate-pulse rounded bg-background"></span><span class="h-4 w-32 animate-pulse rounded bg-background"></span></div></div>
+          <div class="overflow-hidden rounded-2xl border border-border bg-surface"><div class="aspect-square animate-pulse bg-background motion-reduce:animate-none"></div><div class="flex flex-col gap-2 p-4"><span class="h-5 w-24 animate-pulse rounded bg-background"></span><span class="h-4 w-32 animate-pulse rounded bg-background"></span></div></div>
+          <div class="overflow-hidden rounded-2xl border border-border bg-surface"><div class="aspect-square animate-pulse bg-background motion-reduce:animate-none"></div><div class="flex flex-col gap-2 p-4"><span class="h-5 w-24 animate-pulse rounded bg-background"></span><span class="h-4 w-32 animate-pulse rounded bg-background"></span></div></div>
+          <div class="overflow-hidden rounded-2xl border border-border bg-surface"><div class="aspect-square animate-pulse bg-background motion-reduce:animate-none"></div><div class="flex flex-col gap-2 p-4"><span class="h-5 w-24 animate-pulse rounded bg-background"></span><span class="h-4 w-32 animate-pulse rounded bg-background"></span></div></div>
         </div>
         <div data-state="empty" hidden class="flex min-h-[7rem] flex-col items-center justify-center gap-1 rounded-2xl border border-dashed border-foreground/15 px-3 py-8 text-center">
           <p class="text-sm font-medium">Mẫu gọng mới sắp về</p>
           <p class="text-sm text-muted">Ghé cửa hàng để xem bộ sưu tập mùa này.</p>
         </div>
+        <div data-state="no-match" hidden class="flex min-h-[7rem] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-foreground/15 px-3 py-8 text-center">
+          <div><p class="text-sm font-medium">Chưa có mẫu khớp bộ lọc</p><p class="mt-1 text-sm text-muted">Cửa hàng còn hơn 400 mẫu khác.</p></div>
+          <button type="button" data-action="reset-facets" class="inline-flex min-h-10 cursor-pointer items-center justify-center rounded-xl border border-border-strong bg-surface px-4 py-2 text-sm font-medium outline-hidden hover:bg-button-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Bỏ lọc</button>
+        </div>
         <div data-state="error" hidden role="alert" class="flex flex-col items-center gap-3 py-10 text-center">
           <div><p class="text-sm font-medium text-red-600">Không tải được danh sách gọng</p><p class="mt-1 text-sm text-muted">Kiểm tra kết nối mạng rồi thử lại.</p></div>
-          <button type="button" data-action="retry-frames" class="inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 py-2 text-sm font-medium outline-hidden hover:bg-button-hover"><i data-lucide="rotate-cw" class="size-4 shrink-0"></i>Thử lại</button>
+          <button type="button" data-action="retry-frames" class="inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 py-2 text-sm font-medium outline-hidden hover:bg-button-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"><i data-lucide="rotate-cw" class="size-4 shrink-0"></i>Thử lại</button>
         </div>
+        <p class="mt-6 text-center text-sm text-muted">Đây là vài mẫu tiêu biểu. <a href="#stores" class="font-medium text-foreground underline underline-offset-4 hover:text-gold-text">Hơn 400 mẫu đang có tại cửa hàng</a></p>
       </section>
 
-      <!-- Quy trình -->
-      <section class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
-        <h2 class="font-display text-xl font-bold">Quy trình một lần ghé</h2>
-        <p class="mt-1 text-sm text-muted">Không cần hẹn trước, đo mắt miễn phí.</p>
-        <ol class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <li class="flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5"><span class="flex size-8 items-center justify-center rounded-lg bg-sand text-sm font-semibold text-gold-text">1</span><b class="text-base font-semibold">Ghé cửa hàng</b><span class="text-sm text-muted">Bất kỳ lúc nào trong giờ mở cửa. Nhớ mang theo kính đang đeo.</span></li>
-          <li class="flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5"><span class="flex size-8 items-center justify-center rounded-lg bg-sand text-sm font-semibold text-gold-text">2</span><b class="text-base font-semibold">Đo mắt miễn phí</b><span class="text-sm text-muted">Đo độ cận, loạn, viễn trong khoảng 15–20 phút.</span></li>
-          <li class="flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5"><span class="flex size-8 items-center justify-center rounded-lg bg-sand text-sm font-semibold text-gold-text">3</span><b class="text-base font-semibold">Chọn gọng</b><span class="text-sm text-muted">Thử gọng và chọn tròng hợp với độ của bạn.</span></li>
-          <li class="flex flex-col gap-2 rounded-2xl border border-border bg-surface p-5"><span class="flex size-8 items-center justify-center rounded-lg bg-sand text-sm font-semibold text-gold-text">4</span><b class="text-base font-semibold">Nhận kính trong ngày</b><span class="text-sm text-muted">Tròng đặt riêng 2–3 ngày. Chỉnh gọng, vệ sinh kính miễn phí trọn đời.</span></li>
-        </ol>
-      </section>
-
-      <!-- Đội ngũ -->
-      <section class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
-        <h2 class="mb-6 font-display text-xl font-bold">Đội ngũ tư vấn</h2>
-        <div class="grid gap-3 md:grid-cols-2">
-          <div class="flex gap-4 rounded-2xl border border-border bg-surface p-5">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop" alt="Nguyễn Minh Thư" loading="lazy" class="size-20 shrink-0 rounded-xl bg-background object-cover" />
-            <div class="min-w-0">
-              <b class="block text-base font-semibold">Nguyễn Minh Thư</b>
-              <span class="mt-1 block text-sm text-muted">Khúc xạ viên · Lê Lợi · 12 năm · Kính cho trẻ em</span>
-              <p class="mt-2 text-sm">Chuyên tư vấn gọng và tròng kiểm soát cận thị cho trẻ, có mặt cả cuối tuần.</p>
+      <!-- 4. Tròng kính: thang độ cận từ nhạt tới đậm. Kính áp tròng và phụ kiện là hai ô nhỏ bên dưới, cùng nhóm "sản phẩm khác". -->
+      <section id="lenses" class="mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6">
+        <div class="rounded-3xl border border-border bg-surface p-6 sm:p-8">
+          <div class="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p class="text-xs font-medium tracking-[0.3em] text-gold-text uppercase">Tròng kính</p>
+              <h2 class="mt-2 font-display text-2xl font-bold sm:text-3xl">Cận càng nặng, tròng càng mỏng</h2>
+            </div>
+            <p class="max-w-xs text-sm text-muted">Nhân viên tư vấn loại tròng sau khi đo mắt.</p>
+          </div>
+          <div class="mt-8 grid gap-6 md:grid-cols-3 md:gap-1">
+            <div class="flex flex-col">
+              <span class="h-2 rounded-full bg-sand md:rounded-r-none" aria-hidden="true"></span>
+              <span class="mt-4 text-sm text-muted">Cận dưới 2 độ</span>
+              <b class="mt-1 font-display text-lg font-semibold">Tiêu chuẩn 1.56</b>
+              <span class="mt-3 text-base font-semibold">Đã gồm trong giá gọng</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="h-2 rounded-full bg-gold md:rounded-none" aria-hidden="true"></span>
+              <span class="mt-4 flex flex-wrap items-center gap-2 text-sm text-muted">Cận 2–6 độ<span class="rounded-full bg-primary px-2 py-0.5 text-xs font-semibold text-primary-foreground">Chọn nhiều nhất</span></span>
+              <b class="mt-1 font-display text-lg font-semibold">Mỏng 1.67</b>
+              <span class="mt-3 text-base font-semibold tabular-nums">+600.000đ</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="h-2 rounded-full bg-primary md:rounded-l-none" aria-hidden="true"></span>
+              <span class="mt-4 text-sm text-muted">Cận trên 6 độ</span>
+              <b class="mt-1 font-display text-lg font-semibold">Siêu mỏng 1.74</b>
+              <span class="mt-3 text-base font-semibold tabular-nums">+1.200.000đ</span>
             </div>
           </div>
-          <div class="flex gap-4 rounded-2xl border border-border bg-surface p-5">
-            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80&auto=format&fit=crop" alt="Trần Quốc Huy" loading="lazy" class="size-20 shrink-0 rounded-xl bg-background object-cover" />
-            <div class="min-w-0">
-              <b class="block text-base font-semibold">Trần Quốc Huy</b>
-              <span class="mt-1 block text-sm text-muted">Khúc xạ viên · Nguyễn Thị Thập · 8 năm · Kính áp tròng</span>
-              <p class="mt-2 text-sm">Chuyên lắp kính áp tròng cho người cận nặng và loạn thị.</p>
-            </div>
+          <dl class="mt-8 grid gap-3 border-t border-border-strong pt-5 text-sm md:grid-cols-[auto_1fr] md:gap-x-8">
+            <dt class="font-medium">Tuỳ chọn thêm</dt>
+            <dd class="text-muted">Lọc ánh sáng xanh <b class="font-medium text-foreground">+250.000đ</b> · Đổi màu khi ra nắng <b class="font-medium text-foreground">+700.000đ</b> · Râm phân cực <b class="font-medium text-foreground">+600.000đ</b></dd>
+            <dt class="font-medium">Tròng khác</dt>
+            <dd class="text-muted">Đa tròng · Hai tròng · Không độ · <span id="lenses-kids">Kiểm soát cận thị cho trẻ 6–17 tuổi</span> · báo giá sau khi đo</dd>
+          </dl>
+        </div>
+
+        <div class="mt-4 grid items-start gap-4 lg:grid-cols-[1.6fr_1fr]">
+          <div id="contacts" class="flex flex-col items-start gap-4 rounded-3xl border border-border bg-surface p-6 sm:p-8">
+            <h2 class="font-display text-xl font-bold">Kính áp tròng</h2>
+            <ul class="flex flex-wrap gap-2" aria-label="Loại kính áp tròng">
+              <li class="rounded-full bg-background px-3 py-1.5 text-sm font-medium">1 ngày</li>
+              <li class="rounded-full bg-background px-3 py-1.5 text-sm font-medium">2 tuần</li>
+              <li class="rounded-full bg-background px-3 py-1.5 text-sm font-medium">1 tháng</li>
+              <li class="rounded-full bg-background px-3 py-1.5 text-sm font-medium">Toric cho loạn thị</li>
+              <li class="rounded-full bg-background px-3 py-1.5 text-sm font-medium">Đa tròng</li>
+              <li class="rounded-full bg-background px-3 py-1.5 text-sm font-medium">Màu</li>
+            </ul>
+            <a href="#stores" class="mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline">Ghé thử, có khúc xạ viên hướng dẫn<i data-lucide="arrow-right" class="size-4 shrink-0"></i></a>
+          </div>
+          <div id="accessories" class="flex flex-col gap-3 rounded-3xl bg-sand p-6 sm:p-8">
+            <h2 class="font-display text-xl font-bold">Phụ kiện</h2>
+            <ul class="grid grid-cols-2 gap-x-4 gap-y-1">
+              <li class="flex min-h-10 items-center gap-2 text-sm font-medium"><i data-lucide="briefcase" class="size-4 shrink-0 text-gold-text"></i>Hộp kính</li>
+              <li class="flex min-h-10 items-center gap-2 text-sm font-medium"><i data-lucide="sparkles" class="size-4 shrink-0 text-gold-text"></i>Khăn lau</li>
+              <li class="flex min-h-10 items-center gap-2 text-sm font-medium"><i data-lucide="link" class="size-4 shrink-0 text-gold-text"></i>Dây đeo</li>
+              <li class="flex min-h-10 items-center gap-2 text-sm font-medium"><i data-lucide="droplet" class="size-4 shrink-0 text-gold-text"></i>Nước ngâm</li>
+            </ul>
           </div>
         </div>
       </section>
 
-      <!-- Đánh giá -->
-      <section class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
-        <div class="mb-6 flex flex-wrap items-end justify-between gap-2">
-          <h2 class="font-display text-xl font-bold">Khách hàng nói gì</h2>
-          <p class="flex items-center gap-2 text-sm"><i data-lucide="star" class="size-4 shrink-0 fill-current text-gold-text"></i><b class="font-semibold">4,9</b><span class="text-muted">từ 1.248 đánh giá Google</span></p>
+      <!-- 5. Đo mắt + quy trình + khúc xạ viên: khối tối duy nhất trong trang, nơi kể "một lần ghé". -->
+      <section id="exam" class="bg-primary text-primary-foreground">
+        <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:py-20">
+          <div class="flex flex-col items-start gap-5">
+            <p class="text-xs font-medium tracking-[0.3em] text-gold-on-dark uppercase">Đo mắt miễn phí</p>
+            <h2 class="font-display text-3xl leading-tight font-extrabold uppercase sm:text-4xl">Một lần ghé,<br />có kính mới</h2>
+            <p class="max-w-sm text-base text-primary-foreground/75">Đo bằng máy hiện đại, khúc xạ viên đọc kết quả và tư vấn ngay.</p>
+            <!-- Khúc xạ viên: ảnh Unsplash là ảnh mẫu, thay bằng ảnh thật. -->
+            <div class="mt-2 flex items-center gap-4">
+              <span class="flex -space-x-3">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&q=80&auto=format&fit=crop" alt="" loading="lazy" class="size-12 rounded-full object-cover ring-2 ring-primary" />
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80&auto=format&fit=crop" alt="" loading="lazy" class="size-12 rounded-full object-cover ring-2 ring-primary" />
+              </span>
+              <span class="text-sm text-primary-foreground/75"><b class="font-semibold text-primary-foreground">Minh Thư, Quốc Huy</b><br />Khúc xạ viên, 8–12 năm kinh nghiệm</span>
+            </div>
+          </div>
+          <ol class="flex flex-col">
+            <li class="flex gap-4 border-b border-primary-foreground/15 pb-5"><span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-gold-on-dark/60 font-display text-sm font-semibold text-gold-on-dark">1</span><span><b class="block text-base font-semibold">Ghé cửa hàng</b><span class="mt-1 block text-sm text-primary-foreground/70">Không cần hẹn. Nhớ mang theo kính đang đeo.</span></span></li>
+            <li class="flex gap-4 border-b border-primary-foreground/15 py-5"><span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-gold-on-dark/60 font-display text-sm font-semibold text-gold-on-dark">2</span><span><b class="block text-base font-semibold">Đo mắt, 15–20 phút</b><span class="mt-1 block text-sm text-primary-foreground/70">Đo cận, loạn, viễn. Hoàn toàn miễn phí.</span></span></li>
+            <li class="flex gap-4 border-b border-primary-foreground/15 py-5"><span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-gold-on-dark/60 font-display text-sm font-semibold text-gold-on-dark">3</span><span><b class="block text-base font-semibold">Chọn gọng và tròng</b><span class="mt-1 block text-sm text-primary-foreground/70">Thử gọng thoải mái, chọn tròng hợp với độ.</span></span></li>
+            <li class="flex gap-4 pt-5"><span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-gold-on-dark/60 font-display text-sm font-semibold text-gold-on-dark">4</span><span><b class="block text-base font-semibold">Nhận kính trong ngày</b><span class="mt-1 block text-sm text-primary-foreground/70">Tròng đặt riêng 2–3 ngày. Chỉnh gọng miễn phí trọn đời.</span></span></li>
+          </ol>
         </div>
-        <div class="grid gap-3 md:grid-cols-3">
-          <figure class="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5">
-            <figcaption class="flex items-center gap-3"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" loading="lazy" class="size-8 shrink-0 rounded-full bg-background object-cover" /><span class="min-w-0"><b class="block truncate text-sm font-medium">Phạm Hà My</b><span class="block text-xs text-muted">2 tuần trước</span></span></figcaption>
-            <blockquote class="text-sm">Ghé lúc 8 giờ tối vẫn được đo ngay, không phải chờ. Mình cận 5,5 độ mà tròng mới mỏng hơn hẳn kính cũ, lấy kính ngay trong buổi chiều.</blockquote>
+      </section>
+
+      <!-- 6. Đánh giá + con số. "8 năm" và "52.000+" là số giả, thay bằng số thật trước khi lên trang. -->
+      <section class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+        <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-xs font-medium tracking-[0.3em] text-gold-text uppercase">Khách hàng</p>
+            <h2 class="mt-2 flex items-center gap-3 font-display text-2xl font-bold sm:text-3xl"><i data-lucide="star" class="size-6 shrink-0 fill-current text-gold-text"></i>4,9 trên Google</h2>
+            <p class="mt-2 text-sm text-muted">Từ 1.248 đánh giá</p>
+          </div>
+          <dl class="flex flex-wrap gap-x-8 gap-y-3">
+            <div class="flex flex-col"><dt class="order-2 text-xs text-muted">năm cắt kính</dt><dd class="font-display text-xl font-bold tabular-nums">8</dd></div>
+            <div class="flex flex-col"><dt class="order-2 text-xs text-muted">khách hàng</dt><dd class="font-display text-xl font-bold tabular-nums">52.000+</dd></div>
+            <div class="flex flex-col"><dt class="order-2 text-xs text-muted">mẫu gọng</dt><dd class="font-display text-xl font-bold tabular-nums">400+</dd></div>
+          </dl>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+          <figure class="flex flex-col justify-between gap-5 rounded-2xl border border-border bg-surface p-6">
+            <blockquote class="text-base leading-relaxed">“Ghé lúc 8 giờ tối vẫn được đo ngay. Cận 5,5 độ mà tròng mới mỏng hơn hẳn kính cũ.”</blockquote>
+            <figcaption class="flex items-center gap-3"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" loading="lazy" class="size-9 shrink-0 rounded-full bg-background object-cover" /><span class="min-w-0"><b class="block truncate text-sm font-medium">Phạm Hà My</b><span class="block text-xs text-muted">2 tuần trước</span></span></figcaption>
           </figure>
-          <figure class="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5">
-            <figcaption class="flex items-center gap-3"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" loading="lazy" class="size-8 shrink-0 rounded-full bg-background object-cover" /><span class="min-w-0"><b class="block truncate text-sm font-medium">Lê Hoàng Nam</b><span class="block text-xs text-muted">1 tháng trước</span></span></figcaption>
-            <blockquote class="text-sm">Cuối cùng cũng có kính râm có độ để chạy xe.</blockquote>
+          <figure class="flex flex-col justify-between gap-5 rounded-2xl border border-border bg-surface p-6">
+            <blockquote class="text-base leading-relaxed">“Cuối cùng cũng có kính râm có độ để chạy xe.”</blockquote>
+            <figcaption class="flex items-center gap-3"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" loading="lazy" class="size-9 shrink-0 rounded-full bg-background object-cover" /><span class="min-w-0"><b class="block truncate text-sm font-medium">Lê Hoàng Nam</b><span class="block text-xs text-muted">1 tháng trước</span></span></figcaption>
           </figure>
-          <figure class="flex flex-col gap-3 rounded-2xl border border-border bg-surface p-5">
-            <figcaption class="flex items-center gap-3"><span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-sand text-xs font-semibold text-gold-text">TH</span><span class="min-w-0"><b class="block truncate text-sm font-medium">Nguyễn Thị Thanh Hương</b><span class="block text-xs text-muted">3 tháng trước</span></span></figcaption>
-            <blockquote class="text-sm">Chị Thư giải thích về cận thị của bé rất dễ hiểu, không làm bé sợ, còn dặn lịch đo lại để theo dõi độ. Gọng cho trẻ em chắc chắn, bé làm rơi hai lần rồi vẫn không sao.</blockquote>
+          <figure class="flex flex-col justify-between gap-5 rounded-2xl border border-border bg-surface p-6">
+            <blockquote class="text-base leading-relaxed">“Chị Thư giải thích về cận thị của bé rất dễ hiểu, còn dặn lịch đo lại để theo dõi độ.”</blockquote>
+            <figcaption class="flex items-center gap-3"><span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-sand text-xs font-semibold text-gold-text">TH</span><span class="min-w-0"><b class="block truncate text-sm font-medium">Nguyễn Thị Thanh Hương</b><span class="block text-xs text-muted">3 tháng trước</span></span></figcaption>
           </figure>
         </div>
       </section>
 
+      <!-- 7. Cửa hàng: chốt hành động. Trạng thái mở cửa tính trong main.js từ data-hours (giờ Việt Nam, chỉ số 0 là Chủ nhật). -->
+      <section id="stores" class="border-t border-border-strong bg-surface">
+        <div class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+          <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p class="text-xs font-medium tracking-[0.3em] text-gold-text uppercase">Cửa hàng</p>
+              <h2 class="mt-2 font-display text-2xl font-bold sm:text-3xl">Ghé Lucie hôm nay</h2>
+              <p class="mt-2 text-sm text-muted">Không cần hẹn trước. Đo mắt miễn phí.</p>
+            </div>
+            <!-- Zalo: zalo.me/<số điện thoại đã đăng ký Zalo>, hoặc link Zalo OA nếu cửa hàng có. -->
+            <a href="https://zalo.me/0909123456" target="_blank" rel="noopener" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 text-sm font-medium transition-colors hover:bg-button-hover"><i data-lucide="message-circle" class="size-4 shrink-0"></i>Hỏi trước qua Zalo</a>
+          </div>
+          <ul class="grid gap-4 md:grid-cols-2">
+            <li class="flex flex-col gap-5 rounded-3xl border border-border-strong bg-background p-6" data-hours='[["08:30","21:30"],["08:30","21:30"],["08:30","21:30"],["08:30","21:30"],["08:30","21:30"],["08:30","21:30"],["08:30","21:30"]]'>
+              <div>
+                <b class="block font-display text-lg font-semibold">Lê Lợi</b>
+                <span class="mt-1 block text-sm text-muted">214 Lê Lợi, P. Bến Thành, TP.HCM</span>
+                <span class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"><span class="flex items-center gap-2"><span data-status-dot class="size-2 shrink-0 rounded-full bg-success" aria-hidden="true"></span><span data-status-label class="font-medium text-success">Đang mở cửa</span></span><span class="text-muted tabular-nums">T2–CN 8:30–21:30</span></span>
+              </div>
+              <div class="flex gap-2">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=214+L%C3%AA+L%E1%BB%A3i%2C+B%E1%BA%BFn+Th%C3%A0nh%2C+TP.HCM" target="_blank" rel="noopener" class="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Chỉ đường</a>
+                <a href="tel:0909123456" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 text-sm font-medium tabular-nums transition-colors hover:bg-button-hover"><i data-lucide="phone" class="size-4 shrink-0"></i>0909 123 456</a>
+              </div>
+            </li>
+            <li class="flex flex-col gap-5 rounded-3xl border border-border-strong bg-background p-6" data-hours='[["09:00","18:00"],["09:00","21:00"],["09:00","21:00"],["09:00","21:00"],["09:00","21:00"],["09:00","21:00"],["09:00","21:00"]]'>
+              <div>
+                <b class="block font-display text-lg font-semibold">Nguyễn Thị Thập</b>
+                <span class="mt-1 block text-sm text-muted">88 Nguyễn Thị Thập, P. Tân Hưng, TP.HCM</span>
+                <span class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm"><span class="flex items-center gap-2"><span data-status-dot class="size-2 shrink-0 rounded-full bg-success" aria-hidden="true"></span><span data-status-label class="font-medium text-success">Đang mở cửa</span></span><span class="text-muted tabular-nums">T2–T7 9:00–21:00, CN đến 18:00</span></span>
+              </div>
+              <div class="flex gap-2">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=88+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp%2C+T%C3%A2n+H%C6%B0ng%2C+TP.HCM" target="_blank" rel="noopener" class="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Chỉ đường</a>
+                <a href="tel:0938765432" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 text-sm font-medium tabular-nums transition-colors hover:bg-button-hover"><i data-lucide="phone" class="size-4 shrink-0"></i>0938 765 432</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
 
+    <!-- Chân trang: cửa hàng đã có ngay phía trên nên chỉ giữ liên hệ, chính sách và pháp lý. Mọi chỗ [cần điền] lấy từ giấy phép kinh doanh thật. -->
     <footer class="bg-primary pb-20 text-primary-foreground md:pb-0">
-      <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm sm:px-6 md:flex-row md:items-center md:justify-between">
-        <div class="flex flex-col gap-2">
-          <span class="font-display text-2xl font-light tracking-[0.5em] uppercase">Lucie</span>
-          <span class="font-display text-xs tracking-[0.5em] uppercase">Eyewear</span>
-          <span class="mt-1 text-xs tracking-[0.3em] text-gold-on-dark uppercase">A clearer you</span>
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 text-sm sm:px-6 md:grid-cols-[1fr_auto] md:gap-16">
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-2">
+            <span class="font-display text-2xl font-light tracking-[0.5em] uppercase">Lucie</span>
+            <span class="text-xs tracking-[0.3em] text-gold-on-dark uppercase">A clearer you</span>
+          </div>
+          <ul class="flex flex-col gap-1">
+            <li><a href="tel:18006789" class="inline-flex min-h-8 items-center gap-2 hover:underline"><i data-lucide="phone" class="size-4 shrink-0 text-gold-on-dark"></i>Hotline 1800 6789</a></li>
+            <li><a href="mailto:[cần điền]" class="inline-flex min-h-8 items-center gap-2 hover:underline"><i data-lucide="mail" class="size-4 shrink-0 text-gold-on-dark"></i>Email [cần điền]</a></li>
+          </ul>
         </div>
-        <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="Chân trang"><a href="#" class="inline-flex h-8 items-center hover:underline">Chính sách bảo hành</a><a href="#" class="inline-flex h-8 items-center hover:underline">Đổi trả</a><a href="#" class="inline-flex h-8 items-center hover:underline">Tuyển dụng</a></nav>
-        <span>© 2026 Lucie Eyewear</span>
+        <div id="policies" class="flex flex-col gap-3">
+          <h2 class="text-xs font-medium tracking-[0.2em] text-gold-on-dark uppercase">Chính sách</h2>
+          <nav class="grid grid-cols-2 gap-x-8 gap-y-1" aria-label="Chính sách">
+            <a href="#" class="inline-flex min-h-8 items-center hover:underline">Bảo hành</a>
+            <a href="#" class="inline-flex min-h-8 items-center hover:underline">Đổi trả</a>
+            <a href="#" class="inline-flex min-h-8 items-center hover:underline">Bảo mật thông tin</a>
+            <a href="#" class="inline-flex min-h-8 items-center hover:underline">Thanh toán</a>
+            <a href="#" class="inline-flex min-h-8 items-center hover:underline">Tuyển dụng</a>
+          </nav>
+          <p class="pt-1 text-xs text-primary-foreground/70">Tiền mặt · chuyển khoản · Visa / Mastercard</p>
+        </div>
+      </div>
+      <div class="border-t border-primary-foreground/15">
+        <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-xs text-primary-foreground/70 sm:px-6 md:flex-row md:items-center md:justify-between">
+          <div class="flex flex-col gap-1">
+            <span>Công ty [cần điền: tên pháp nhân] · MST / GPKD [cần điền] cấp ngày [cần điền] tại [cần điền]</span>
+            <span>© 2026 Lucie Eyewear</span>
+          </div>
+          <!-- Logo "Đã thông báo Bộ Công Thương": lấy đúng ảnh và link từ online.gov.vn sau khi đăng ký, không tự vẽ. -->
+          <span class="inline-flex h-12 w-36 shrink-0 items-center justify-center rounded-lg border border-dashed border-primary-foreground/30 text-center">Logo Bộ Công Thương<br />[cần điền]</span>
+        </div>
       </div>
     </footer>
 
@@ -309,7 +372,6 @@
     <div class="fixed inset-x-0 bottom-0 z-30 border-t border-border-strong bg-surface p-3 md:hidden">
       <div class="flex gap-2">
         <a href="tel:18006789" aria-label="Gọi hotline" title="Gọi hotline" class="inline-flex size-11 shrink-0 items-center justify-center rounded-xl border border-border-strong bg-surface text-muted transition-colors hover:bg-button-hover hover:text-foreground"><i data-lucide="phone" class="size-4"></i></a>
-        <!-- Zalo: zalo.me/<số điện thoại đã đăng ký Zalo>, hoặc link Zalo OA nếu cửa hàng có. -->
         <a href="https://zalo.me/0909123456" target="_blank" rel="noopener" class="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 py-2 text-sm font-medium transition-colors hover:bg-button-hover"><i data-lucide="message-circle" class="size-4 shrink-0"></i>Zalo</a>
         <a href="#stores" class="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"><i data-lucide="map-pin" class="size-4 shrink-0"></i>Ghé cửa hàng</a>
       </div>
